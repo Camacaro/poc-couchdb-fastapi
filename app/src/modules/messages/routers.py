@@ -1,7 +1,9 @@
-from fastapi import APIRouter, HTTPException, Depends
+from fastapi import APIRouter, Depends
+from couchdb import Server
 
 from .controllers import main as main_controller
 from .schemas import main as main_schema
+from ...dependencies import main as main_dependencies
 
 router = APIRouter(
   prefix="/messages",
@@ -16,7 +18,7 @@ def health():
 @router.post("/", response_model=main_schema.Message)
 def create_message(
   message: main_schema.MessageBase,
+  db: Server = Depends(main_dependencies.get_db)
 ):
-  message = main_controller.save_message(message)
-  print(message)
+  message = main_controller.save_message(db, message)
   return message

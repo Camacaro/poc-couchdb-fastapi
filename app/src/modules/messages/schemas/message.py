@@ -7,7 +7,7 @@ class MessageBase(BaseModel):
   date: str
 
 class Message(MessageBase):
-  id: Optional[int] = None
+  id: Optional[str] = None
 
   class Config:
     orm_mode = True
