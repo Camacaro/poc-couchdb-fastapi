@@ -1,4 +1,5 @@
 from .message import (
   Message,
-  MessageBase
+  MessageBase,
+  MessageTransaction,
 )

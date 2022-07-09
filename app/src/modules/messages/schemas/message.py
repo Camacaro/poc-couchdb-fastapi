@@ -11,3 +11,14 @@ class Message(MessageBase):
 
   class Config:
     orm_mode = True
+
+class MessageTransaction(BaseModel):
+  id: str
+  name: str
+  phone: str
+  comprobante: Optional[str] = None
+  amount: str
+  details: Optional[str] = None
+
+  class Config:
+    orm_mode = True

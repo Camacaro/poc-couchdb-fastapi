@@ -15,7 +15,7 @@ router = APIRouter(
 def health():
   return {"messages_is_alive": True}
 
-@router.post("/", response_model=main_schema.Message)
+@router.post("/", response_model=main_schema.MessageTransaction)
 def create_message(
   message: main_schema.MessageBase,
   db: Server = Depends(main_dependencies.get_db)
